@@ -1,0 +1,124 @@
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    transform: translateX(-60%) scale(0);
+  }
+}
+@keyframes moveRight {
+  0% {
+    transform: translateX(-60%) scale(0);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+#chat form {
+    border-radius: 10px !important;
+    margin-left: 20px !important;
+    padding: 1px !important;
+    width: 300px !important;
+}
+#chat form .autocomplete-dropdown{
+    margin-left: 255px !important;
+    margin-top: -1px !important;
+}
+#chat.global form {
+    background: #68c5ff !important;
+}
+#chat.user form {
+    background: #08ef0a !important;
+}
+#chat:not(.open) form{
+    z-index: -1 !important;
+    position: relative !important;
+    animation: moveLeft 0.1s cubic-bezier(0.79, -0.02, 0.32, 0.98) forwards !important;
+}
+#chat:is(.opening, .open) form {
+    z-index: -1 !important;
+    left: 5px;
+    position: relative !important;
+    padding-right: 0 !important;
+    animation: moveRight 0.3s cubic-bezier(0.79, -0.02, 0.32, 0.98) forwards !important;
+}
+#chat:is(.opening, .open) .content, #chat:is(.opening, .open) textarea {
+    width: 230px !important;
+}
+#chat {
+    -webkit-filter: drop-shadow(0 7px 4px rgba(0, 0, 0, .5)) !important;
+    filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 1px 2px) !important;
+}
+.body.ui-resizable {
+    width: 310px !important;
+    left: 5px;
+}
+#chat.opening textarea, #chat.open textarea {
+    width: 290px !important;
+    margin-left: -20px !important;
+}
+#chat:not(.opening) textarea, #chat:not(.open) textarea {
+    margin-left: -20px !important;
+}
+#chat .handle {
+    display: none !important;
+}
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.muteGlobalChat-button {
+    cursor: pointer;
+    position: absolute;
+    top: 72px;
+    right: -12px;
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
+.muteUserChat-button {
+    cursor: pointer;
+    position: absolute;
+    top: 42px;
+    right: -12px;
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    box-shadow: none;
+}
+.muteSystemMessages-button {
+    cursor: pointer;
+    position: absolute;
+    top: 102px;
+    right: -12px;
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    box-shadow: none;
+}
+#chat:not(.open) .clearChat-button,
+#chat:not(.open) .muteGlobalChat-button,
+#chat:not(.open) .muteUserChat-button,
+#chat:not(.open) .muteSystemMessages-button {
+    animation: disappear 0.3s cubic-bezier(0.79, 0.02, 0.32, 0.98) forwards;
+}
+#chat:is(.opening, .open) .clearChat-button,
+#chat:is(.opening, .open) .muteGlobalChat-button,
+#chat:is(.opening, .open) .muteUserChat-button,
+#chat:is(.opening, .open) .muteSystemMessages-button {
+    animation: appear 0.3s cubic-bezier(0.79, -0.02, 0.32, 0.98) forwards;
+}

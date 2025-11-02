@@ -1,0 +1,44 @@
+{
+	"name": "Chat Additions",
+	"author": "kamarov",
+	"version": "1.0.0",
+	"manifest_version": 3,
+	"description": "Few cool chat additions!",
+	"icons": {
+		"128": "src/icon/icon128.png"
+	},
+
+	"declarative_net_request": {
+		"rule_resources": []
+	},
+
+	"permissions": [
+		"declarativeNetRequest",
+		"declarativeNetRequestFeedback",
+		"declarativeNetRequestWithHostAccess",
+		"storage",
+		"activeTab"
+	],
+
+	"host_permissions": [
+		"*://*.tanktrouble.com/",
+		"*://*.raw.githubusercontent.com/"
+	],
+
+	"content_scripts": [
+		{
+			"matches": ["*://*.tanktrouble.com/*"],
+			"js": ["src/scripts/chatadditions.js"],
+			"css": ["src/css/style.css"],
+			"run_at": "document_idle",
+            "world": "MAIN"
+		}
+	],
+
+
+
+	"web_accessible_resources": [{
+		"resources": [],
+		"matches": [ "*://*.tanktrouble.com/*" ]
+	}]
+}
